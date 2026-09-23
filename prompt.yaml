@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+ vars_prompt:
+   - name: "oracle_sid"
+     prompt: "Please enter the "oracle_sid"
+     private: no
+   - name: "backup_type"
+     prompt: "Please enter Backup "backup_type"
+ 
+ pre_tasks:
+   - assert:
+       that: oracle_sid !="oracle_sid"
+       msg: "ORACLE_SID is not defined"
+   tags: ['sid']
